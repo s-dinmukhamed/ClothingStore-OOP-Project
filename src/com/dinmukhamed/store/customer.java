@@ -6,13 +6,15 @@ public class customer {
     private String name;
     private String address;
     private String email;
+    private double loyaltyPoints;
 
     //Constructor
-    public customer(int client_id, String name, String address, String email) {
+    public customer(int client_id, String name, String address, String email,  double loyaltyPoints) {
         this.client_id = client_id;
         this.name = name;
         this.address = address;
         this.email = email;
+        this.loyaltyPoints = loyaltyPoints;
     }
 
     //Getters
@@ -28,6 +30,7 @@ public class customer {
     public String getEmail() {
         return email;
     }
+    public double getLoyaltyPoints() {return loyaltyPoints;}
 
     //Setters
     public void setClient_id(int client_id) {
@@ -42,8 +45,25 @@ public class customer {
     public void setEmail(String email) {
         this.email = email;
     }
+    public void setLoyaltyPoints(double loyaltyPoints) {this.loyaltyPoints = loyaltyPoints;}
 
     //Methods
+    public boolean isVIP(){
+        if (loyaltyPoints > 800){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void pointsDeduction(int monthsWithoutShopping){
+        if (monthsWithoutShopping >= 6){
+            System.out.println("All loyalty points were removed");
+        }else {
+            System.out.println("Loyalty points are saved");
+        }
+    }
+
 
 
     //To string

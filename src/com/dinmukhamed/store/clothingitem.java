@@ -36,6 +36,18 @@ public class clothingitem {
     public void setTypeOfCloth(String typeOfCloth) {this.typeOfCloth = typeOfCloth;}
 
     //Methods
+    public void applDiscount(double Percent){
+        double discount = price * (Percent/100);
+        price =  price - discount;
+    }
+    public boolean amountCheck(){
+        if(amount >= 10){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 
     //To string
     @Override

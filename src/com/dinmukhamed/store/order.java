@@ -50,7 +50,16 @@ public class order {
     public void setCustomer_adress(String customer_adress) {this.customer_adress = customer_adress;}
 
     //methods
+    public void cashback(){
+        int cashBackPercent = 10;
+        double cashback = final_price * cashBackPercent / 100;
+        System.out.println("Cashback equals to " + cashback);
+    }
 
+    public double loyaltyBonus(){
+        double points = final_price * 1/1000;
+        return points;
+    }
 
     //To string
     @Override
