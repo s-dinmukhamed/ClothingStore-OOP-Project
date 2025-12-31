@@ -10,11 +10,11 @@ public class order {
 
     //Constructor
     public order(int order_id, int amountOfItems, double final_price, String customer_name, String customer_adress) {
-        this.order_id = order_id;
-        this.amountOfItems = amountOfItems;
-        this.final_price = final_price;
-        this.customer_name = customer_name;
-        this.customer_adress = customer_adress;
+        setOrder_id(order_id);
+        setAmountOfItems(amountOfItems);
+        setFinal_price(final_price);
+        setCustomer_name(customer_name);
+        setCustomer_adress(customer_adress);
     }
 
     //Getters
@@ -36,18 +36,42 @@ public class order {
 
     //Setters
     public void setOrder_id(int order_id) {
-        this.order_id = order_id;
+        if(order_id > 0){
+            this.order_id = order_id;
+        }else{
+            this.order_id = 0;
+        }
     }
     public void setAmountOfItems(int amountOfItems) {
-        this.amountOfItems = amountOfItems;
+        if( amountOfItems >= 0) {
+            this.amountOfItems = amountOfItems;
+        }else {
+            System.out.println("Warning: amount of items cannot be negative");
+            this.amountOfItems = 0;
+        }
     }
     public void setFinal_price(double final_price) {
-        this.final_price = final_price;
+        if(final_price > 0) {
+            this.final_price = final_price;
+        }else{
+            System.out.println("Warning: Price cannot be negative");
+            this.final_price = 0;
+        }
     }
     public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+        if (customer_name != null && !customer_name.trim().isEmpty()) {
+            this.customer_name = customer_name;
+        } else {
+            System.out.println("Warning: name cannot be empty");
+        }
     }
-    public void setCustomer_adress(String customer_adress) {this.customer_adress = customer_adress;}
+    public void setCustomer_adress(String customer_adress) {
+        if (customer_adress != null && !customer_adress.trim().isEmpty()) {
+            this.customer_adress = customer_adress;
+        } else {
+            System.out.println("Warning: address cannot be empty");
+        }
+    }
 
     //methods
     public void cashback(){

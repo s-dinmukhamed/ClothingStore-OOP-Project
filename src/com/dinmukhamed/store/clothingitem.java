@@ -9,14 +9,14 @@ public class clothingitem {
     private int amount;
     private String typeOfCloth;
 
-    //Consttructor with parameters
+    //Constructor with parameters
     public clothingitem(int item_id, String size, double price, String brand,  int amount,  String typeOfCloth) {
-        this.item_id = item_id;
+        setId(item_id);
         this.size = size;
-        this.price = price;
-        this.brand = brand;
-        this.amount = amount;
-        this.typeOfCloth = typeOfCloth;
+        setPrice(price);
+        setBrand(brand);
+        setAmount(amount);
+        setTypeOfCloth(typeOfCloth);
     }
 
     //Getters
@@ -28,12 +28,46 @@ public class clothingitem {
     public String getTypeOfCloth() {return typeOfCloth;}
 
     //Setters
-    public void setId(int item_id) {this.item_id = item_id;}
+    public void setId(int item_id) {
+        if (item_id > 0){
+            this.item_id = item_id;
+        }else {
+            System.out.println("Warning: ID cannot be negative");
+            this.item_id = 0;
+        }
+    }
     public void setSize(String size) {this.size = size;}
-    public void setPrice(double price) {this.price = price;}
-    public void setBrand(String brand) {this.brand = brand;}
-    public void setAmount(int amount) {this.amount = amount;}
-    public void setTypeOfCloth(String typeOfCloth) {this.typeOfCloth = typeOfCloth;}
+    public void setPrice(double price) {
+        if(price > 0){
+            this.price = price;
+        }else {
+            System.out.println("Warning: Price cannot be negative ");
+            this.price = 0;
+        }
+    }
+    public void setBrand(String brand) {
+        if (brand != null && !brand.trim().isEmpty()) {
+            this.brand = brand;
+        } else {
+            System.out.println("Warning: Brand name cannot be empty!");
+        }
+    }
+    public void setAmount(int amount) {
+
+        if(amount > 0){
+            this.amount = amount;
+        }else {
+            System.out.println("Warning: Amount cannot be negative ");
+            this.amount = 0;
+        }
+    }
+    public void setTypeOfCloth(String typeOfCloth) {
+        if (typeOfCloth != null && !typeOfCloth.trim().isEmpty()) {
+            this.typeOfCloth = typeOfCloth;
+        } else {
+            System.out.println("Warning: type of cloth cannot be empty!");
+        }
+    }
 
     //Methods
     public void applDiscount(double Percent){

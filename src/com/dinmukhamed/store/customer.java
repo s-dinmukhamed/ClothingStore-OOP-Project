@@ -10,11 +10,11 @@ public class customer {
 
     //Constructor
     public customer(int client_id, String name, String address, String email,  double loyaltyPoints) {
-        this.client_id = client_id;
-        this.name = name;
-        this.address = address;
-        this.email = email;
-        this.loyaltyPoints = loyaltyPoints;
+        setClient_id(client_id);
+        setName(name);
+        setAddress(address);
+        setEmail(email);
+        setLoyaltyPoints(loyaltyPoints);
     }
 
     //Getters
@@ -34,18 +34,41 @@ public class customer {
 
     //Setters
     public void setClient_id(int client_id) {
-        this.client_id = client_id;
+        if(client_id > 0){
+            this.client_id = client_id;
+        }else {
+            System.out.println("Warning: ID cannot be negative.");
+            this.client_id = 0;
+        }
     }
     public void setName(String name) {
-        this.name = name;
+        if (name != null && !name.trim().isEmpty()) {
+            this.name = name;
+        } else {
+            System.out.println("Warning: name cannot be empty");
+        }
     }
     public void setAddress(String address) {
-        this.address = address;
+        if (address != null && !address.trim().isEmpty()) {
+            this.address = address;
+        } else {
+            System.out.println("Warning: Address cannot be empty!");
+        }
     }
     public void setEmail(String email) {
-        this.email = email;
+        if(email.contains("@")){
+            this.email = email;
+        }else{
+            System.out.println("Warning: Email must contain\"@\" sign");
+        }
     }
-    public void setLoyaltyPoints(double loyaltyPoints) {this.loyaltyPoints = loyaltyPoints;}
+    public void setLoyaltyPoints(double loyaltyPoints) {
+        if(loyaltyPoints > 0){
+            this.loyaltyPoints = loyaltyPoints;
+        }else{
+            this.loyaltyPoints = 0;
+        }
+    }
 
     //Methods
     public boolean isVIP(){
