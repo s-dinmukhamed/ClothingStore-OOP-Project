@@ -2,21 +2,22 @@ package com.dinmukhamed.store;
 
 public class clothingitem {
     //Private fields
-    private int item_id;
-    private String size;
-    private double price;
-    private String brand;
-    private int amount;
-    private String typeOfCloth;
+    protected int item_id;
+    protected String size;
+    protected double price;
+    protected String brand;
+    protected int amount;
 
     //Constructor with parameters
-    public clothingitem(int item_id, String size, double price, String brand,  int amount,  String typeOfCloth) {
+    public clothingitem(int item_id, String size, double price, String brand,  int amount) {
         setId(item_id);
         this.size = size;
         setPrice(price);
         setBrand(brand);
         setAmount(amount);
-        setTypeOfCloth(typeOfCloth);
+    }
+
+    public clothingitem() {
     }
 
     //Getters
@@ -25,7 +26,6 @@ public class clothingitem {
     public double getPrice() {return price;}
     public String getBrand() {return brand;}
     public int getAmount() {return amount;}
-    public String getTypeOfCloth() {return typeOfCloth;}
 
     //Setters
     public void setId(int item_id) {
@@ -61,13 +61,7 @@ public class clothingitem {
             this.amount = 0;
         }
     }
-    public void setTypeOfCloth(String typeOfCloth) {
-        if (typeOfCloth != null && !typeOfCloth.trim().isEmpty()) {
-            this.typeOfCloth = typeOfCloth;
-        } else {
-            System.out.println("Warning: type of cloth cannot be empty!");
-        }
-    }
+
 
     //Methods
     public void applDiscount(double Percent){
@@ -81,7 +75,28 @@ public class clothingitem {
             return true;
         }
     }
+    //Overriden
+    public void shirtMadeOf(){
+        System.out.print("Shirt");
+    }
+    public String whatBrand(){
+        return "Brand";
+    }
 
+    public void pantsMadeOf(){
+        System.out.println("Pants");
+    }
+    public String whatBrandPants(){
+        return "Brand";
+    }
+    //Not overriden
+    public String isAvailable(){
+        if(amount > 0){
+            return "Available";
+        }else{
+            return "Not available";
+        }
+    }
 
     //To string
     @Override

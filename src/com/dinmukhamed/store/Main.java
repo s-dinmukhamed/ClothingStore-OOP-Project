@@ -9,9 +9,9 @@ public class Main {
     public static ArrayList<order> orders = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        clothingitems.add(new clothingitem(1, "S", 15500, "Nike", 40, "Jeans"));
-        clothingitems.add(new clothingitem(2, "XL", 23000, "Adidas", 24, "Hoodie"));
-        clothingitems.add(new clothingitem(3, "M", 9990, "Puma", 13, "T-shirt"));
+        clothingitems.add(new clothingitem(1, "S", 15500, "Nike", 40));
+        clothingitems.add(new clothingitem(2, "XL", 23000, "Adidas", 24));
+        clothingitems.add(new clothingitem(3, "M", 9990, "Puma", 13));
 
         customers.add(new customer(1,"Dimash", "Kabanbay Batur 60a/6", "dimash@gmail.com", 400));
         customers.add(new customer(2, "Miras", "Kabanbay Batyr 60a/13", "miras@gmail.com", 200));
@@ -73,7 +73,7 @@ public class Main {
         System.out.print("Enter type of item: ");
         String typeOfCloth = scanner.nextLine();
 
-        clothingitem item = new clothingitem(item_id, size, price, brand, amount, typeOfCloth);
+        clothingitem item = new clothingitem(item_id, size, price, brand, amount);
         clothingitems.add(item);
 
         System.out.println("New item added successfully ");
@@ -92,7 +92,8 @@ public class Main {
         for(int i = 0; i < clothingitems.size(); i++){
             clothingitem item = clothingitems.get(i);
             System.out.println(item.getId()+"-"+
-                    item.getBrand()+" "+item.getTypeOfCloth());
+                    item.getBrand());
+
             System.out.println("Amount: "+item.getAmount());
             System.out.println("Size: "+item.getSize());
             System.out.println("Price: "+item.getPrice());
