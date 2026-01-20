@@ -1,4 +1,4 @@
-package com.dinmukhamed.store;
+package model;
 
 public class Pants extends clothingitem{
     private String fabricType;
@@ -22,14 +22,7 @@ public class Pants extends clothingitem{
     }
 
     @Override
-    public void MadeOf(){
-        System.out.println("Pants made of " + fabricType);
-    }
-
-    @Override
-    public String whatBrandPants(){
-        return brand;
-    }
+    public void MadeOf(){System.out.println("Pants made of " + fabricType);}
 
     public void applyDiscount(int x){
         price = price - price * (x/100);

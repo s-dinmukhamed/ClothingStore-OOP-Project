@@ -1,4 +1,4 @@
-package com.dinmukhamed.store;
+package model;
 
 public class order {
     //Private fields

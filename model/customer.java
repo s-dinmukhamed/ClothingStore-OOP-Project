@@ -1,6 +1,6 @@
-package com.dinmukhamed.store;
+package model;
 
-public class customer {
+public class customer implements client_compare{
     //private fields
     private int client_id;
     private String name;
@@ -87,6 +87,18 @@ public class customer {
         }
     }
 
+    @Override
+    public void addPoints(double points) {
+        if (points <= 0) return;
+        loyaltyPoints += points;
+    }
+
+    @Override
+    public void removePoints(double points) {
+        if (points <= 0) return;
+        loyaltyPoints -= points;
+        if (loyaltyPoints < 0) loyaltyPoints = 0;
+    }
 
 
     //To string
@@ -94,4 +106,6 @@ public class customer {
     public String toString() {
         return "Costumers{Client id = "+client_id+", Client name = "+name+", Address = "+address+", Email = "+email+"}";
     }
+
+
 }

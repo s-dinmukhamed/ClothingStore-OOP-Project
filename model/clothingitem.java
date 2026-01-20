@@ -1,6 +1,6 @@
-package com.dinmukhamed.store;
+package model;
 
-public class clothingitem {
+public abstract class clothingitem {
     //Private fields
     protected int item_id;
     protected String size;
@@ -11,13 +11,10 @@ public class clothingitem {
     //Constructor with parameters
     public clothingitem(int item_id, String size, double price, String brand,  int amount) {
         setId(item_id);
-        this.size = size;
+        setSize(size);
         setPrice(price);
         setBrand(brand);
         setAmount(amount);
-    }
-
-    public clothingitem() {
     }
 
     //Getters
@@ -32,36 +29,37 @@ public class clothingitem {
         if (item_id > 0){
             this.item_id = item_id;
         }else {
-            System.out.println("Warning: ID cannot be negative");
-            this.item_id = 0;
+            throw new IllegalArgumentException("Name cannot be empty");
         }
     }
-    public void setSize(String size) {this.size = size;}
+    public void setSize(String size) {
+        if (size != null && !size.trim().isEmpty()) {
+            this.size = size;
+        } else {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+    }
     public void setPrice(double price) {
         if(price > 0){
             this.price = price;
         }else {
-            System.out.println("Warning: Price cannot be negative ");
-            this.price = 0;
+            throw new IllegalArgumentException("Name cannot be empty");
         }
     }
     public void setBrand(String brand) {
         if (brand != null && !brand.trim().isEmpty()) {
             this.brand = brand;
         } else {
-            System.out.println("Warning: Brand name cannot be empty!");
+            throw new IllegalArgumentException("Name cannot be empty");
         }
     }
     public void setAmount(int amount) {
-
         if(amount > 0){
             this.amount = amount;
         }else {
-            System.out.println("Warning: Amount cannot be negative ");
-            this.amount = 0;
+            throw new IllegalArgumentException("Name cannot be empty");
         }
     }
-
 
     //Methods
     public void applDiscount(double Percent){
@@ -75,28 +73,18 @@ public class clothingitem {
             return true;
         }
     }
-    //Overriden
-    public void MadeOf(){
-        System.out.print("Shirt");
-    }
-    public String whatBrand(){
-        return "Brand";
+
+    //concrete method
+    public void displayInfo(){
+        System.out.println("ID: " + item_id);
+        System.out.println("Size: " + size);
+        System.out.println("Brand: " + brand);
+        System.out.println("Price: " + price + " KZT");
+        System.out.println("AMount: " + amount);
     }
 
-    public void pantsMadeOf(){
-        System.out.println("Pants");
-    }
-    public String whatBrandPants(){
-        return "Brand";
-    }
-    //Not overriden
-    public String isAvailable(){
-        if(amount > 0){
-            return "Available";
-        }else{
-            return "Not available";
-        }
-    }
+    //methods to concrete
+    public abstract void MadeOf();
 
     //To string
     @Override

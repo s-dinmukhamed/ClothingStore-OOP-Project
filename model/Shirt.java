@@ -1,4 +1,4 @@
-package com.dinmukhamed.store;
+package model;
 
 public class Shirt extends clothingitem{
     private String material;
@@ -19,10 +19,6 @@ public class Shirt extends clothingitem{
     @Override
         public void MadeOf(){
             System.out.println(brand + " shirt made of " + material);
-    }
-    @Override
-        public String whatBrand(){
-            return brand;
     }
 
     public boolean isAffordable(){

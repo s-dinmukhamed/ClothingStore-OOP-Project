@@ -1,51 +1,63 @@
-package com.dinmukhamed.store;
-
+package menu;
+import model.*;
+import exception.InvalidInputException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
-    public static ArrayList<clothingitem> clothingitems = new ArrayList<>();
+public class clothingStoreMenu implements Menu {
+    private ArrayList<clothingitem> clothingitems= new ArrayList<>();;
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        clothingitems.add(new clothingitem(3, "l", 20000, "Puma", 100));
-        clothingitems.add(new Shirt(1, "S", 15500, "Nike", 40, "cotton"));
-        clothingitems.add(new Pants(2, "XL", 23000, "Adidas", 24, "Denim", 77));
-        boolean running = true;
-        while (running) {
-            displayMenu();
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-            switch (choice){
-                case 1: addShirt(); break;
-                case 2: addPants(); break;
-                case 3: viewAll(); break;
-                case 4: viewShirts(); break;
-                case 5: viewPants(); break;
-                case 6: showPolymorph(); break;
-                case 0: running = false; break;
-            }
 
+    public clothingStoreMenu(){
+
+
+        try{
+            clothingitems.add(new Shirt(1, "S", 15500, "Nike", 40, "cotton"));
+            clothingitems.add(new Pants(2, "XL", 23000, "Adidas", 24, "Denim", 77));
+        } catch (IllegalArgumentException e){
+            System.out.println("Error initializing test data: " + e.getMessage());
+        }
+    }
+
+    @Override
+        public void displayMenu() {
+            System.out.println("---------------------");
+            System.out.println("Clothing Store System");
+            System.out.println("---------------------");
+            System.out.println("1. Add Shirt");
+            System.out.println("2. Add Pants");
+            System.out.println("3. View all items");
+            System.out.println("4. View only Shirts");
+            System.out.println("5. View only pants");
+            System.out.println("6. Show polymorphism");
+            System.out.println("0. Exit");
+            System.out.println("Enter your choice: ");
         }
 
+    @Override
+            public void run(){
+                boolean running = true;
+                displayMenu();
+                while (running) {
 
-    }
+                    int choice = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (choice){
+                        case 1: addShirt(); break;
+                        case 2: addPants(); break;
+                        case 3: viewAll(); break;
+                        case 4: viewShirts(); break;
+                        case 5: viewPants(); break;
+                        case 6: showPolymorph(); break;
+                        case 0: running = false; break;
 
-    private static void displayMenu() {
-        System.out.println("---------------------");
-        System.out.println("Clothing Store System");
-        System.out.println("---------------------");
-        System.out.println("1. Add Shirt");
-        System.out.println("2. Add Pants");
-        System.out.println("3. View all items");
-        System.out.println("4. View only Shirts");
-        System.out.println("5. View only pants");
-        System.out.println("6. Show polymorphism");
-        System.out.println("0. Exit");
-        System.out.println("Enter your choice: ");
-    }
 
-    private static void addShirt() {
+                    }
+                }
+            }
+
+    private void addShirt() {
         System.out.println("===============");
         System.out.println("Adding a Shirt");
         System.out.println("===============");
@@ -76,7 +88,7 @@ public class Main {
         System.out.println("Shirt added successfully");
     }
 
-    private static void addPants() {
+    private void addPants() {
         System.out.println("===============");
         System.out.println("Adding Pants");
         System.out.println("===============");
@@ -111,7 +123,7 @@ public class Main {
         System.out.println("Pants added successfully");
     }
 
-    private static void viewAll() {
+    private void viewAll() {
         if (clothingitems.isEmpty()) {
             System.out.println("No clothing items found.");
             return;
@@ -132,7 +144,7 @@ public class Main {
         System.out.println();
     }
 
-    private static void viewShirts() {
+    private void viewShirts() {
         System.out.println("=======");
         System.out.println("Shirts");
         System.out.println("=======");
@@ -150,7 +162,7 @@ public class Main {
 
     }
 
-    private static void viewPants() {
+    private void viewPants() {
         System.out.println("=======");
         System.out.println("Pants");
         System.out.println("=======");
@@ -166,7 +178,7 @@ public class Main {
             }
         }
     }
-    private static void showPolymorph(){
+    private void showPolymorph(){
         System.out.println("==========================");
         System.out.println("Demonstrating Polymorphism");
         System.out.println("==========================");
