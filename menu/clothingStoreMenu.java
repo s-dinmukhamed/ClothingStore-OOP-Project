@@ -124,42 +124,32 @@ public class clothingStoreMenu implements Menu {
     }
 
     private void viewAll() {
-        if (clothingitems.isEmpty()) {
-            System.out.println("No clothing items found.");
+        if(clothingitems.isEmpty()){
+            System.out.println("There is no items");
             return;
         }
-        System.out.println("Total staff: " + clothingitems.size());
-        System.out.println();
-
-        for (int i = 0; i < clothingitems.size(); i++) {
+        for(int i = 0; i < clothingitems.size(); i++){
             clothingitem s = clothingitems.get(i);
-            System.out.println((i + 1) + ". " + s);
-            if (s instanceof Shirt) {
-                Shirt shirt = (Shirt) s;
-                System.out.println(shirt);
-            } else if (s instanceof Pants) {
-                System.out.println(s);
-            }
+            System.out.println(s);
         }
-        System.out.println();
+
     }
 
     private void viewShirts() {
         System.out.println("=======");
         System.out.println("Shirts");
         System.out.println("=======");
-        int shirts_count = 0;
+        int shirt_count = 0;
         for(clothingitem s : clothingitems){
             if (s instanceof Shirt){
                 Shirt shirt = (Shirt) s;
-                shirts_count++;
-                System.out.println(shirts_count + ". " + shirt.getBrand());
+                shirt_count++;
+                System.out.println(shirt_count + ". " + shirt.getBrand());
                 System.out.println("Price: " + shirt.getPrice());
                 System.out.println("Material: " + shirt.getMaterial());
-                System.out.println();
+                System.out.println("Amount: " + shirt.getAmount());
             }
         }
-
     }
 
     private void viewPants() {
